@@ -18,7 +18,13 @@ public class PropertiesValidator {
             if (firefoxDriverPath.isEmpty()) {
                 throw new ConfigurationException("FirefoxDriverPath empty");
             }
+            if (runOnBrowser.equalsIgnoreCase("Edge")) {
+                if (edgeDriverPath.isEmpty()) {
+                    throw new ConfigurationException("EdgeDriverPath empty");
 
+                }
+            }
         }
     }
 }
+

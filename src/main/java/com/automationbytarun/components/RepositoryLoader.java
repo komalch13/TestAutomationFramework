@@ -8,9 +8,9 @@ import java.util.Properties;
 
 public class RepositoryLoader {
 
-    static Properties properties;
+    static Properties properties;// create properties
     public void loadproperties() throws IOException {
-        String path=System.getProperty("user.dir")+ "//src//main//resources//OR.properties";
+        String path=System.getProperty("user.dir")+ "//src//main//resources//OR.properties";//loading properties from mentioned path
         FileInputStream fis=new FileInputStream(new File(path));
         properties=new Properties();
         properties.load(fis);
@@ -18,13 +18,14 @@ public class RepositoryLoader {
     }
 
     public String getProperty(String name){
-       return properties.getProperty(name);
+
+        return properties.getProperty(name);
     }
 
     public static void main(String[] args) throws IOException {
-        RepositoryLoader loader=new RepositoryLoader();
+        RepositoryLoader loader=new RepositoryLoader();//load properties
         loader.loadproperties();
-        System.out.println(loader.getProperty("LoginPage.tbx_Username"));
+        System.out.println(loader.getProperty("LogInPage.usernamevariable")); // get properties
 
     }
 }

@@ -20,6 +20,7 @@ public class Chrome extends Browser {
     @Override
     public void setPreferences() {
         chromeoptions = new ChromeOptions();
+        //instantiate the class
         if (isHeadless()) {
             chromeoptions.setHeadless(true);
 
@@ -28,9 +29,10 @@ public class Chrome extends Browser {
             chromeoptions.addArguments("start-maximized");//from https://chromedriver.chromium.org/capabilities
 
         }
-        Map<String, Object> prefs = new HashMap<String, Object>();
+        Map<String, Object> prefs = new HashMap<String, Object>();// setting different prefrences codes are written in selenum.dev
         prefs.put("credentials_enable_services", false);
         prefs.put("profile.password_manager_enabled", false);
+        prefs.put("useAutomationExtension", false);
         prefs.put("excludeSwitches",
                 Collections.singletonList("enable-automation"));
         chromeoptions.setExperimentalOption("prefs", prefs);
@@ -41,7 +43,7 @@ public class Chrome extends Browser {
     }
 
     @Override
-    public WebDriver loadBrowser(String path) {
+    public WebDriver loadBrowser(String path) {// path to load the properties
         WebDriver driver= null;
 
         System.setProperty("webdriver.chrome.driver", path);
@@ -58,6 +60,7 @@ public class Chrome extends Browser {
             if( isDeleteCookies()){
                 driver.manage().deleteAllCookies();
             }
+
 
         }
         return driver;

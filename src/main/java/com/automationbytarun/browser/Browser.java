@@ -3,8 +3,9 @@ package com.automationbytarun.browser;
 import org.openqa.selenium.WebDriver;
 
 public abstract class Browser {
+    //abstract because anything that you make to access to child class you make it abstract
 
-    WebDriver driver;
+    public WebDriver driver;
 
     private boolean isHeadless;
 

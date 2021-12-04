@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Firefox extends Browser{
 
-    FirefoxOptions firefoxoptions;
-
+    FirefoxOptions firefoxoptions;// options are certain setting that we can enable or disable to use, that we are setting here.
+//instantiate the class
     @Override
     public void setPreferences() {
         firefoxoptions = new FirefoxOptions();
@@ -42,10 +42,10 @@ public class Firefox extends Browser{
     public WebDriver loadBrowser(String path) {
         WebDriver driver= null;
 
-        System.setProperty("webdriver.firefox.driver", path);
+        System.setProperty("webdriver.gecko.driver", path);
         if (isRemote()) {
             try {
-                driver = new RemoteWebDriver(new URL("http://loca;host:4444/wd/hub"), firefoxoptions);
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxoptions);
 
             } catch (Exception e) {
 
@@ -53,7 +53,7 @@ public class Firefox extends Browser{
             }
 
         } else{
-            driver= new FirefoxDriver(firefoxoptions);
+            driver= new FirefoxDriver(firefoxoptions);// to instantiate and setting prefrences
             if(isMaximized()){
                 driver.manage().window().maximize();
             }
